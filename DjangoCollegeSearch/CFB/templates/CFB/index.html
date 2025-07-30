@@ -1,0 +1,41 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>College Football Django</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <header>
+        <h1>College Football Django App</h1>
+        <nav>
+            <ul>
+                <li><a href="{% url 'index' %}">Home</a></li>
+                <li><a href="#">Teams</a></li>
+                <li><a href="#">Conferences</a></li>
+                <li><a href="#">Bowl Games</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <h1>Welcome to the College Football Django App</h1>
+        <p>This is the index page for the College Football app.</p>
+        <p>Use the navigation to explore different sections.</p>
+        <h2>Organizations</h2>
+        <li>
+            {% for organization in organizations %}
+            <div class="indexCard">
+                <h3>{{ organization.name }}</h3>
+                <p>Location: {{ organization.location }}</p>
+                <img src="{{organization.logo.url}}" alt="...">
+            </div>
+            {% endfor %}
+        </li>
+    </main>
+    <footer>
+        <p>&copy; 2023 College Football Django App</p>
+    </footer>    
+</body>
+</html>
